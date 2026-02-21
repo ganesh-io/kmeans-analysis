@@ -1,21 +1,88 @@
-Results and Observations
+# K-Means Clustering Analysis from Scratch (Python)
 
-Experiments were conducted on the Iris dataset (150 samples, 4 features).
+A complete **from-scratch implementation of the K-Means clustering algorithm**, designed to analyze and compare **Random Initialization** and **K-Means++ Initialization** using experimental evaluation on the Iris dataset.
 
-K-Means clustering was evaluated for k = 2, 3, and 4.
+This project focuses on **algorithmic clarity, reproducibility, and experimental rigor**, rather than relying on high-level ML libraries.
 
-For each k, clustering was repeated multiple times using:
+---
 
-Random initialization
+## Overview
 
-K-Means++ initialization
+K-Means is highly sensitive to centroid initialization.  
+This project empirically demonstrates:
 
-Observations:
+- How different initialization strategies affect convergence
+- Why K-Means++ provides more stable and lower-inertia solutions
+- How to evaluate clustering performance through repeated experiments
 
-K-Means++ consistently achieved lower and more stable inertia compared to random initialization.
+All core logic is implemented manually using NumPy.
 
-Random initialization showed higher variance across runs due to sensitivity to initial centroid placement.
+---
 
-The elbow plot indicates a clear elbow around k = 3, aligning with the known structure of the Iris dataset.
+## Features
 
-This confirms that K-Means++ improves convergence stability and clustering quality.
+- K-Means clustering implemented from scratch
+- Random and K-Means++ initialization strategies
+- Multiple experimental runs to reduce randomness bias
+- Inertia (WCSS) used as the evaluation metric
+- Elbow method to estimate optimal number of clusters
+- Modular, research-style project structure
+- Reproducible results and saved plots
+
+---
+
+## Dataset
+
+- **Dataset**: Iris
+- **Samples**: 150
+- **Features**: 4 numerical features
+  - Sepal Length
+  - Sepal Width
+  - Petal Length
+  - Petal Width
+- **Note**: Class labels are intentionally excluded (unsupervised learning)
+
+The dataset is generated programmatically using `sklearn.datasets.load_iris` and saved as a clean numeric CSV file.
+
+---
+
+## Algorithms Implemented
+
+### K-Means Clustering
+- Euclidean distance metric
+- Iterative centroid updates
+- Convergence based on centroid stability
+
+### Initialization Strategies
+- **Random Initialization**
+- **K-Means++ Initialization** (distance-weighted centroid selection)
+
+### Evaluation
+- Inertia (Within-Cluster Sum of Squares)
+- Multiple independent runs per configuration
+- Boxplot-based comparison
+- Elbow plot for cluster selection
+
+---
+
+## Project Structure
+
+```text
+kmeans-analysis/
+│
+├── src/
+│   ├── kmeans.py           # Core K-Means algorithm
+│   ├── initialization.py  # Random & K-Means++ initialization
+│   ├── metrics.py         # Inertia computation
+│   ├── experiments.py     # Experiment runner & plotting
+│   └── utils.py           # CSV loading utilities
+│
+├── data/
+│   └── iris.csv            # Clean numeric dataset
+│
+├── results/
+│   └── plots/              # Generated plots
+│
+├── make_iris.py            # Dataset generation script
+├── README.md
+└── .gitignore
