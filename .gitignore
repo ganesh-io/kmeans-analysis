@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Compiled / binaries
+*.exe
+*.out
+*.class
+
+# Temporary files
+*.log
+*.tmp
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Optional: if plots can be regenerated
+# results/plots/
